@@ -71,7 +71,7 @@ NETWORK=webproxy
 3. Start your container
 
 ```bash
-# docker-compose up -d
+$ docker-compose up -d
 ```
 
 > This container must be in a network connected to your webproxy containers or use the same network of the webproxy.
