@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+   cloud-db:
+     container_name: ${DB_CONTAINER_NAME}
+     image: mariadb:latest
+     restart: unless-stopped
+     volumes:
+        - ${LOCAL_DB_DIR}:/var/lib/mysql
+     environment:
+       MYSQL_DATABASE: ${MYSQL_DATABASE}
+       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+       MYSQL_USER: ${MYSQL_USER}
+       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+   cloud-app:
+     depends_on:
+       - cloud-db
+     container_name: ${APP_CONTAINER_NAME}
+     image: nextcloud:latest
+     restart: unless-stopped
+     volumes:
+       - ${LOCAL_DATA_DIR}:/var/www/html
+       - ${LOCAL_CONF_DIR}:/var/www/html/config
+       - ${LOCAL_APPS_DIR}:/var/www/html/apps
+     environment:
+       NEXTCLOUD_DATA_DIR: ${NEXTCLOUD_DATA_DIR}
+       NEXTCLOUD_TABLE_PREFIX: ${NEXTCLOUD_TABLE_PREFIX}
+       VIRTUAL_HOST: ${VIRTUAL_HOST}
+       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+       MYSQL_DATABASE: ${MYSQL_DATABASE}
+       MYSQL_USER: ${MYSQL_USER}
+       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+       MYSQL_HOST: ${MYSQL_HOST}
+
+networks:
+    default:
+       external:
+         name: ${NETWORK}
