@@ -3,7 +3,7 @@ version: '3'
 services:
    cloud-db:
      container_name: ${DB_CONTAINER_NAME}
-     image: mariadb:latest
+     image: mariadb:${DB_IMAGE_TAG}
      restart: unless-stopped
      volumes:
         - ${LOCAL_DB_DIR}:/var/lib/mysql
@@ -17,7 +17,7 @@ services:
      depends_on:
        - cloud-db
      container_name: ${APP_CONTAINER_NAME}
-     image: nextcloud:latest
+     image: nextcloud:${APP_IMAGE_TAG}
      restart: unless-stopped
      volumes:
        - ${LOCAL_DATA_DIR}:/var/www/html
