@@ -74,6 +74,12 @@ NETWORK=webproxy
 $ docker-compose up -d
 ```
 
+4. Overwrite protocol to https
+
+```bash
+$ docker exec --user www-data cloud-app php occ config:system:set overwriteprotocol --value="https"
+```
+
 > This container must be in a network connected to your webproxy containers or use the same network of the webproxy.
 
 > Please keep in mind that when starting for the first time it may take a few moments (even a couple minutes) to get your Let's Encrypt certificates generated.
