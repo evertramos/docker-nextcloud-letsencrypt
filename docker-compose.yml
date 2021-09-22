@@ -6,7 +6,7 @@ services:
      image: mariadb:${DB_IMAGE_TAG}
      restart: unless-stopped
      volumes:
-        - ${LOCAL_DB_DIR}:/var/lib/mysql-nextcloud
+        - ${LOCAL_DB_DIR}:/var/lib/mysql
      environment:
        MYSQL_DATABASE: ${MYSQL_DATABASE}
        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
