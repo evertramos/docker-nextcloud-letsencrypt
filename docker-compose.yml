@@ -23,7 +23,7 @@ services:
        - ${LOCAL_DATA_DIR}:/var/www/html
        - ${LOCAL_CONF_DIR}:/var/www/html/config
        - ${LOCAL_APPS_DIR}:/var/www/html/apps
-       ./conf.d/php.ini:/usr/local/etc/php/conf.d/php.ini
+       - ./conf.d/php.ini:/usr/local/etc/php/conf.d/php.ini
      environment:
        NEXTCLOUD_ADMIN_USER: ${NEXTCLOUD_ADMIN_USER}
        NEXTCLOUD_ADMIN_PASSWORD: ${NEXTCLOUD_ADMIN_PASSWORD}
