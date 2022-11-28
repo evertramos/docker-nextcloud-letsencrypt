@@ -62,7 +62,7 @@ LETSENCRYPT_EMAIL=your_email@yourdomain.com
 #
 # Network name
 # 
-# Your container app must use a network conencted to your webproxy 
+# Your container app must use a network connected to your webproxy 
 # https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion
 #
 NETWORK=webproxy
