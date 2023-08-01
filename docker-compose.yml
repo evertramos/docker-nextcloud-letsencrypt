@@ -4,6 +4,7 @@ services:
    cloud-db:
      container_name: ${DB_CONTAINER_NAME}
      image: mariadb:${DB_IMAGE_TAG}
+     command: --innodb_read_only_compressed=OFF
      restart: unless-stopped
      volumes:
         - ${LOCAL_DB_DIR}:/var/lib/mysql
